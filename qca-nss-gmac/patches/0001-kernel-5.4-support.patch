@@ -92,9 +92,9 @@
 -	"tstamp",
 -	"ignore_rx_csum_err",
 +static const char *gmac_strings_priv_flags[][ETH_GSTRING_LEN] = {
-+	{"linkpoll"},
-+	{"tstamp"},
-+	{"ignore_rx_csum_err"},
++	"linkpoll",
++	"tstamp",
++	"ignore_rx_csum_err",
  };
  
  #define NSS_GMAC_STATS_LEN	ARRAY_SIZE(gmac_gstrings_stats)
