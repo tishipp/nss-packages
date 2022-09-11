@@ -41,7 +41,7 @@ define KernelPackage/qca-nss-drv/install
 	$(INSTALL_BIN) ./files/qca-nss-drv.hotplug $(1)/etc/hotplug.d/firmware/10-qca-nss-fw
 	$(INSTALL_BIN) ./files/qca-nss-drv.conf $(1)/etc/config/nss
 	$(INSTALL_BIN) ./files/nss-firmware/qca-nss0-retail.bin $(1)/lib/firmware/qca-nss0.bin
-	# $(INSTALL_BIN) ./files/nss-firmware/qca-nss1-retail.bin $(1)/lib/firmware/qca-nss1.bin
+	$(INSTALL_BIN) ./files/nss-firmware/qca-nss1-retail.bin $(1)/lib/firmware/qca-nss1.bin
 
 endef
 
@@ -126,7 +126,6 @@ ifeq ($(CONFIG_TARGET_BOARD), "ipq806x")
     DRV_MAKE_OPTS+= \
 	NSS_DRV_CAPWAP_ENABLE=n \
 	NSS_DRV_QRFS_ENABLE=n \
-	NSS_DRV_PPPOE_ENABLE=n \
 	NSS_DRV_VLAN_ENABLE=n \
 	NSS_DRV_WIFI_ENABLE=n \
 	NSS_DRV_L2TP_ENABLE=n \
@@ -144,7 +143,6 @@ ifeq ($(CONFIG_TARGET_BOARD), "ipq806x")
 	NSS_DRV_TUNIPIP6_ENABLE=n \
 	NSS_DRV_QRFS_ENABLE=n \
 	NSS_DRV_RMNET_ENABLE=n \
-	NSS_DRV_IGS_ENABLE=n \
 	NSS_DRV_OAM_ENABLE=n \
 	NSS_DRV_CLMAP_ENABLE=n \
 	NSS_DRV_VXLAN_ENABLE=n \
