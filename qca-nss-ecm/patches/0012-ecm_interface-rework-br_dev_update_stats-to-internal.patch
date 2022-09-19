@@ -18,7 +18,7 @@ Signed-off-by: Ansuel Smith <ansuelsmth@gmail.com>
  }
  EXPORT_SYMBOL(ecm_interface_mac_addr_get);
  
-+#ifdef ECM_USE_INTERNAL_FUNC
++#if (LINUX_VERSION_CODE > KERNEL_VERSION(5, 11, 0))
 +static void ecm_interface_br_dev_update_stats(struct net_device *dev,
 +					      struct rtnl_link_stats64 *nlstats)
 +{
@@ -46,11 +46,10 @@ Signed-off-by: Ansuel Smith <ansuelsmth@gmail.com>
  			stats.rx_bytes = rx_bytes;
  			stats.tx_packets = tx_packets;
  			stats.tx_bytes = tx_bytes;
--			br_dev_update_stats(dev, &stats);
-+#ifdef ECM_USE_INTERNAL_FUNC
++#if (LINUX_VERSION_CODE > KERNEL_VERSION(5, 11, 0))
 +			ecm_interface_br_dev_update_stats(dev, &stats);
 +#else
-+ 			br_dev_update_stats(dev, &stats);
+ 			br_dev_update_stats(dev, &stats);
 +#endif
  			dev_put(dev);
  			continue;
